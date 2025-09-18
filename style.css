@@ -2809,7 +2809,7 @@ ul {
 }
 
 /* Extra small devices (portrait phones, less than 768px) */
-@media (max-width: 767px) {
+@media (max-width: 350px) {
   /* Header */
   .header_top {
     padding: 8px 0;
