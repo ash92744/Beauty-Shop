@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="responsive.css"> -->
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
@@ -25,47 +26,51 @@
                 <div class="container">
                     <div class="row align-items-center">
 
-                        <div class="col-lg-5">
-                            <div class="home_contact">
-                                <div class="contact_icone">
-                                    <div class="col-lg-1 col-md-2 col-3">
-                                        <img src="images/icon/icon_logo.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Left Section (Logo Icon) -->
+                        <img id="lg" src="images/icon/icon_logo.png" alt="Logo Icon">
 
+                        <!-- Center Logo -->
                         <div class="col-lg-2 col-md-3 col-4">
                             <div class="logo">
-                                <a href="index.html"><img src="images/logo/logo-ash.png" alt=""></a>
+                                <a href="index.html"><img src="images/logo/logo-ash.png" alt="Main Logo"></a>
                             </div>
                         </div>
 
+                        <!-- Right Section (Search, Wishlist, Cart) -->
                         <div class="col-lg-5 col-md-7 col-6">
                             <div class="middel_right">
+
+                                <!-- Search -->
                                 <div class="search_btn">
                                     <a href="#"><i class="ion-ios-search-strong"></i></a>
                                     <div class="dropdown_search">
                                         <form action="#">
                                             <input type="text" placeholder="Search Product ....">
-                                            <button class="btn" type="submit"><i
-                                                    class="ion-ios-search-strong"></i></button>
+                                            <button class="btn" type="submit">
+                                                <i class="ion-ios-search-strong"></i>
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
+
+                                <!-- Wishlist -->
                                 <div class="wishlist_btn">
                                     <a href="#"><i class="ion-heart"></i></a>
                                 </div>
+
+                                <!-- Cart -->
                                 <div class="cart_link">
-                                    <a href="#"><i class="ion-android-cart"></i><span class="cart_text_quantity">My
-                                            Account</span><i class="ion-chevron-down"></i></a>
+                                    <a href="#">
+                                        <i class="ion-android-cart"></i>
+                                        <span class="cart_text_quantity">My Account</span>
+                                        <i class="ion-chevron-down"></i>
+                                    </a>
 
-
-                                    <!-- mini cart -->
+                                    <!-- Mini Cart -->
                                     <div class="mini_cart">
                                         <div class="cart_close">
                                             <div class="cart_text">
-                                                <h3>cart</h3>
+                                                <h3>Cart</h3>
                                             </div>
                                             <div class="mini_cart_close">
                                                 <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
@@ -76,6 +81,7 @@
                                             <span>Subtotal : </span>
                                             <span>Rs: 00</span>
                                         </div>
+
                                         <div class="mini_cart_footer">
                                             <div class="cart_button view_cart">
                                                 <a href="#">View Cart</a>
@@ -85,13 +91,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- mini cart ends  -->
+                                    <!-- Mini Cart End -->
                                 </div>
+
                             </div>
                         </div>
+                        <!-- End Right Section -->
+
                     </div>
                 </div>
             </div>
+
 
             <!-- header middle ends -->
 
@@ -105,7 +115,7 @@
                                 <div class="logo_sticky">
                                     <a href="#"><img src="images/logo/logo-ash.png" alt="logo"></a>
                                 </div>
-                                
+
                                 <div class="main_menu">
                                     <nav>
                                         <ul>
@@ -1936,39 +1946,29 @@
     <script src="main.js"></script>
 </body>
 <script>
-    // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', function () {
         const menuToggle = document.querySelector('.mobile-menu-toggle');
-        const mainMenu = document.querySelector('.main_menu');
+        const mainMenu = document.querySelector('.main_menu nav > ul');
 
-        if (menuToggle && mainMenu) {
-            menuToggle.addEventListener('click', function () {
-                mainMenu.classList.toggle('active');
-            });
+        if (!menuToggle || !mainMenu) return; // stop if elements not found
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!e.target.closest('.main_menu') && !e.target.closest('.mobile-menu-toggle')) {
-                    mainMenu.classList.remove('active');
-                }
-            });
+        // Toggle menu
+        menuToggle.addEventListener('click', function (e) {
+            e.stopPropagation(); // prevent immediate closing
+            mainMenu.classList.toggle('show');
+        });
 
-            // Submenu toggle for mobile
-            const menuItems = mainMenu.querySelectorAll('li');
-            menuItems.forEach(item => {
-                if (item.querySelector('.sub_menu') || item.querySelector('.mega_menu')) {
-                    const link = item.querySelector('a');
-                    link.addEventListener('click', function (e) {
-                        if (window.innerWidth <= 991) {
-                            e.preventDefault();
-                            const submenu = item.querySelector('.sub_menu') || item.querySelector('.mega_menu');
-                            submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-                        }
-                    });
-                }
-            });
-        }
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const clickedInsideMenu = event.target.closest('.main_menu');
+            const clickedToggle = event.target.closest('.mobile-menu-toggle');
+
+            if (mainMenu.classList.contains('show') && !clickedInsideMenu && !clickedToggle) {
+                mainMenu.classList.remove('show');
+            }
+        });
     });
 </script>
+
 
 </html>
