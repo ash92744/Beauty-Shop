@@ -2,13 +2,13 @@
 /* GLOBAL / BASE RULES */
 /* ============================================= */
 
-:root{
+:root {
   --container-max: 1200px;
   --gutter: 15px;
   --bg-dark: #242424;
   --muted: #ebebeb;
   --text-base: 16px;
-  --touch-size: 44px; /* recommended min tap target */
+  --touch-size: 44px;
   --transition-fast: 0.18s;
   --transition-medium: 0.28s;
   --radius: 8px;
@@ -22,10 +22,10 @@ html,body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
   background: #fff;
   color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img, svg, video { max-width: 100%; height: auto; display: block; }
@@ -37,7 +37,6 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
   padding: 0 var(--gutter);
 }
 
-/* utility */
 .hide { display:none !important; }
 .show { display:block !important; }
 .flex { display:flex; }
@@ -46,509 +45,208 @@ img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; cursor: pointer; }
 
 /* ============================================= */
-/* DESKTOP / LARGE (unchanged except small tweaks) */
+/* LOGO ALWAYS LEFT & RESPONSIVE */
 /* ============================================= */
-
-/* Large devices (desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1200px;
-  }
-  
-  .slider_black .slider_content h1 {
-    font-size: 40px;
-    line-height: 46px;
-    margin-bottom: 8px;
-  }
-  
-  .slider_black .slider_content span {
-    font-size: 18px;
-    margin-bottom: 25px;
-  }
-  
-  .slider_black .slider_content a {
-    margin-top: 43px;
-  }
+.contact_icone {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
-
-/* Medium devices (tablets, 992px to 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .banner_black .banner_content h2 {
-    font-size: 21px;
-    line-height: 23px;
-    margin-bottom: 13px;
-  }
-  
-  .main_menu nav > ul > li > a {
-    padding: 19px 15px;
-    font-size: 12px;
-  }
-  
-  .product_tab_button ul li a {
-    padding: 0 20px;
-    font-size: 18px;
-  }
-  
-  .banner_text h2 {
-    font-size: 40px;
-    line-height: 50px;
-  }
-  
-  .newsletter_black .newsletter_content form {
-    width: 500px;
-  }
-  
-  .newsletter_black .newsletter_content form input {
-    padding: 10px 180px 10px 20px;
-  }
+#lg {
+  max-width: 100px;
+  height: auto;
+}
+@media (max-width: 992px) {
+  #lg { max-width: 80px; }
+}
+@media (max-width: 576px) {
+  #lg { max-width: 60px; }
 }
 
 /* ============================================= */
-/* IMPROVED RESPONSIVE RULES (below 992px)       */
-/* Focused fixes for robust mobile behaviour    */
+/* NAVIGATION BAR */
 /* ============================================= */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
 
-/* Shared small/extra-small defaults (applies to <= 991px) */
+.main_menu nav > ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main_menu nav > ul > li > a {
+  display: block;
+  padding: 16px 18px;
+  font-size: 15px;
+  color: #222;
+}
+
 @media (max-width: 991px) {
-  /* Base text scaling for mobile */
-  html { font-size: 15px; } /* slightly smaller base for better line-wrapping */
-  body { -webkit-text-size-adjust: 100%; }
-
-  /* Ensure header elements use compact spacing */
-  .header_top {
-    padding: 8px 0;
-  }
-
-  .header_middel {
-    padding: 10px 0;
-  }
-
-  .logo img { max-width: 160px; height: auto; }
-
-  /* Touch friendly buttons / icons */
-  .search_btn, .wishlist_btn, .cart_link > a, .mobile-menu-toggle {
-    min-width: var(--touch-size);
-    min-height: var(--touch-size);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  /* Ensure images and product thumbnails are responsive and not distorted */
-  .banner_thumb img,
-  .simple_product_thumb img,
-  .product_container img { width: 100%; height: auto; object-fit: cover; }
-
-  /* Make headings less aggressive */
-  h1, h2, h3 { margin: 0 0 8px 0; line-height: 1.2; }
-
-  /* Improve spacing on small screens */
-  .container { padding-left: 12px; padding-right: 12px; }
-}
-
-/* Small devices (landscape phones, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
-  /* Header adjustments */
-  .header_top { padding: 10px 0; }
-  .top_right > ul > li { padding-left: 15px; margin-left: 15px; }
-  .home_contact { justify-content: center; margin-bottom: 12px; }
-  .logo { margin-bottom: 12px; padding: 0; }
-
-  /* Navigation behavior: use slide-down overlay that occupies full width and stays accessible */
   .mobile-menu-toggle {
     display: block;
     position: absolute;
-    right: 15px;
+    right: 12px;
     top: 12px;
     z-index: 1200;
-    background: transparent;
-    border: 0;
-    padding: 8px;
-    -webkit-tap-highlight-color: transparent;
   }
-
   .main_menu_inner { position: relative; }
-
   .main_menu nav > ul {
     display: none;
+    flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: #fff;
     z-index: 1100;
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    padding: 8px 0;
-    max-height: 62vh;
-    overflow-y: auto;
-    transition: max-height var(--transition-medium) ease, opacity var(--transition-fast) ease;
   }
-
-  /* When JS toggles class .show on the UL, menu is visible. This keeps markup unchanged. */
-  .main_menu nav > ul.show { display:block; }
-
-  .main_menu nav > ul > li {
-    display: block;
-    width: 100%;
-  }
-  
+  .main_menu nav > ul.show { display: flex; }
   .main_menu nav > ul > li > a {
     padding: 14px 18px;
     border-bottom: 1px solid var(--muted);
-    font-size: 15px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
   }
-
-  /* Submenus adjusted to be full width and easy to tap */
-  .main_menu nav > ul > li ul.sub_menu,
-  .main_menu nav > ul > li ul.mega_menu {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    width: 100%;
-    min-width: auto;
-    box-shadow: none;
-    border: none;
-    padding: 8px 0 8px 20px;
-    background: transparent;
-  }
-
-  .header_black .main_menu nav > ul { background: var(--bg-dark); color: #fff; }
-  .header_black .main_menu nav > ul > li > a { border-bottom: 1px solid #2d2d2d; }
-
-  /* Slider */
-  .slider_area .single_slider .row { height: 420px; } /* increased a bit for landscape phones */
-  .slider_content h1 { font-size: 34px; line-height: 40px; }
-  .slider_content p { font-size: 15px; }
-
-  /* Banner */
-  .banner_content { top: 15px; left: 15px; }
-  .banner_content h2 { font-size: 20px; line-height: 22px; }
-  .banner_text h2 { font-size: 30px; line-height: 36px; }
-  .banner_text a { margin-top: 32px; padding: 0 28px; }
-
-  /* Product tabs */
-  .product_tab_button ul.nav::before,
-  .product_tab_button ul.nav::after { width: 80px; }
-  .product_tab_button ul li a { padding: 0 14px; font-size: 16px; }
-
-  /* Newsletter */
-  .newsletter_black .newsletter_content form { width: 100%; max-width: 520px; }
-  .newsletter_black .newsletter_content form input { padding: 10px 140px 10px 18px; }
-  .newsletter_black .newsletter_content form button { padding: 0 34px; }
-
-  /* Footer */
-  .footer_black .widgets_container { margin-bottom: 24px; }
 }
 
-/* Extra small devices (portrait phones, less than 768px) */
-/* This is the area you were having trouble with: nav, product cards, etc. */
+/* ============================================= */
+/* PRODUCT GRID */
+/* ============================================= */
+.product_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 991px) {
+  .product_grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .product_grid { grid-template-columns: 1fr; }
+}
+.single_product {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform var(--transition-fast);
+}
+.single_product:hover { transform: translateY(-4px); }
+.single_product .product_thumb {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.single_product .product_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.single_product .product_info {
+  padding: 12px;
+}
+.single_product .product_title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.single_product .product_price {
+  font-size: 13px;
+  color: #e53935;
+  font-weight: 700;
+}
+
+/* ============================================= */
+/* BANNER / SLIDER */
+/* ============================================= */
+.slider_area .single_slider .row {
+  height: 480px;
+  display: flex;
+  align-items: center;
+}
+.slider_content {
+  max-width: 600px;
+}
+.slider_content h1 { font-size: 40px; line-height: 46px; }
+.slider_content p { font-size: 16px; }
+
 @media (max-width: 767px) {
-  /* Header */
-  .header_top { padding: 8px 0; text-align: center; }
-  .social_icone { margin-bottom: 10px; justify-content: center; display: flex; }
-  .top_right { width: 100%; }
-  .top_right > ul { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-  .top_right > ul > li { padding: 0 6px; margin: 0; }
-  .top_right > ul > li::before { display: none; }
-  .top_right > ul > li > a { padding: 6px 0; font-size: 12px; }
-
-  .header_middel { padding: 10px 0; }
-  .home_contact { justify-content: center; margin-bottom: 12px; }
-  .home_contact .contact_box { padding-right: 12px; margin-right: 12px; margin-bottom: 10px; }
-  .logo { margin-bottom: 12px; padding: 0; }
-  .logo img { max-width: 150px; }
-
-  .middel_right { justify-content: center; gap: 8px; }
-
-  .search_btn, .wishlist_btn { margin: 0 6px; }
-  .cart_link { margin-left: 8px; }
-  .cart_link > a { padding: 8px 10px 10px 12px; font-size: 12px; }
-  .cart_link > a i.ion-android-cart { font-size: 15px; margin-right: 6px; padding-right: 6px; }
-
-  .mini_cart { min-width: 260px; padding: 12px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); border-radius: 10px; }
-
-  /* NAVIGATION: improved, accessible, and stable */
-  .mobile-menu-toggle {
-    display: block;
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    z-index: 1300;
-    background: transparent;
-    border: 0;
-    padding: 8px;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .main_menu_inner { position: relative; }
-
-  /* The nav UL is overlayed and scrollable if long.
-     Keep heights limited to avoid pushing page content off-screen. */
-  .main_menu nav > ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    z-index: 1250;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-    padding: 8px 0;
-    max-height: 70vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
-  /* show state (JS toggles this) */
-  .main_menu nav > ul.show {
-    display:block;
-  }
-
-  .main_menu nav > ul > li { display:block; width:100%; }
-  .main_menu nav > ul > li > a {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--muted);
-    font-size: 15px;
-    text-align: left;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    min-height: var(--touch-size);
-  }
-
-  /* Indicate submenu with caret and increase tap area */
-  .main_menu nav > ul > li > a .caret { margin-left: 8px; }
-
-  .main_menu nav > ul > li ul.sub_menu,
-  .main_menu nav > ul > li ul.mega_menu {
-    position: static;
-    width: 100%;
-    padding: 8px 0 8px 18px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-  .main_menu nav > ul > li > ul > li > a { padding: 10px 0; border-bottom: none; font-size: 14px; }
-
-  .header_black .main_menu nav > ul { background: var(--bg-dark); color: #fff; }
-  .header_black .main_menu nav > ul > li > a { border-bottom: 1px solid #2d2d2d; }
-
-  /* Slider adjustments for portrait phones */
-  .slider_area .single_slider .row { height: 300px; }
-  .slider_content { margin-left: 0; text-align: center; padding: 8px; }
-  .slider_content h1 { font-size: 30px; line-height: 34px; margin-bottom: 12px; }
+  .slider_area .single_slider .row { height: 280px; }
+  .slider_content { text-align: center; margin: 0 auto; }
+  .slider_content h1 { font-size: 26px; line-height: 32px; }
   .slider_content p { font-size: 14px; }
+}
 
-  .slider_content a { margin-top: 12px; padding: 0 20px; height: 40px; line-height: 40px; font-size: 13px; }
-
-  .slider_black .slider_content h1 { font-size: 28px; line-height: 32px; }
-  .slider_black .slider_content span { font-size: 16px; margin-bottom: 18px; }
-
-  /* Banner */
-  .banner_section { margin-bottom: 30px; }
-  .banner_thumb { margin-bottom: 16px; }
-  .banner_content { position: relative; padding: 12px; text-align: center; }
-  .banner_content h2 { font-size: 18px; line-height: 22px; }
-  .banner_text h2 { font-size: 22px; line-height: 28px; }
-  .banner_text a { margin-top: 12px; padding: 0 18px; line-height: 40px; font-size: 12px; }
-
-  /* PRODUCT LIST / GRID: use CSS Grid for flexible stacking */
-  .product_container { width: 100%; }
-  /* Default product grid wrapper - two columns on larger phones, single on small */
-  .product_grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-
-  @media (min-width: 540px) {
-    .product_grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  }
-
-  .single_product {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
-  }
-
-  .single_product:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-
-  .single_product .product_thumb {
-    width: 100%;
-    height: 160px;
-    overflow:hidden;
-  }
-  .single_product .product_thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-
-  .single_product .product_info {
-    padding: 12px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .single_product .product_title { font-size: 14px; font-weight: 600; margin: 0; }
-  .single_product .product_price { font-size: 13px; color: #e53935; font-weight:700; }
-
-  .product_container.bottom button {
-    top: -38px;
-    right: 12px;
-  }
-  .product_container.bottom button.next_arrow { right: 6px; }
-
-  /* Product tabs stacking */
-  .product_tab_button {
-    margin-bottom: 16px;
-  }
-  .product_tab_button ul.nav::before,
-  .product_tab_button ul.nav::after { display: none; }
-  .product_tab_button ul li { display: block; margin-bottom: 10px; }
-  .product_tab_button ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    border-left: 0;
-    border-top: 2px solid #ebebeb;
-    background: transparent;
-    font-size: 14px;
-  }
-  .product_tab_button ul li:first-child a { border-top: 0; }
-
-  .product_black_section .product_tab_button ul li a { border-top: 2px solid #2d2d2d; }
-
-  /* Newsletter area becomes column stack */
-  .newsletter_area { padding-bottom: 32px; margin-bottom: 32px; }
-  .newsletter_black h2 { font-size: 20px; line-height: 24px; }
-  .newsletter_black p { margin-bottom: 12px; }
+/* ============================================= */
+/* NEWSLETTER */
+/* ============================================= */
+.newsletter_black .newsletter_content form {
+  display: flex;
+  gap: 10px;
+}
+.newsletter_black .newsletter_content form input {
+  flex: 1;
+  padding: 10px 14px;
+}
+.newsletter_black .newsletter_content form button {
+  padding: 10px 20px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+}
+@media (max-width: 767px) {
   .newsletter_black .newsletter_content form {
     flex-direction: column;
-    width: 100%;
-    gap: 8px;
-  }
-  .newsletter_black .newsletter_content form input {
-    padding: 10px 14px;
-    margin-bottom: 8px;
-    width: 100%;
   }
   .newsletter_black .newsletter_content form button {
-    position: static;
     width: 100%;
-    padding: 10px 14px;
-    height: auto;
-  }
-
-  /* Blog */
-  .blog_section { padding-bottom: 32px; margin-bottom: 32px; }
-  .blog_content h3 { font-size: 15px; }
-
-  .blog_wrapper .owl-nav { position: static; justify-content:center; margin-top:12px; }
-
-  /* Footer compacting */
-  .footer_black { padding-top: 28px; }
-  .footer_top { padding-bottom: 24px; }
-  .footer_black .widgets_container > h3 { font-size: 18px; margin-bottom: 12px; }
-  .footer_contact ul li a { width: 36px; height: 36px; line-height: 36px; font-size: 15px; }
-  .simple_product_items { flex-direction: column; gap: 8px; }
-  .simple_product_thumb { width: 100%; margin-bottom: 8px; }
-  .simple_product_content { width: 100%; margin-left: 0; }
-  .footer_bottom { padding: 16px 0 20px; }
-
-  /* Modal */
-  .modal-dialog.modal-dialog-centered { min-width: auto; margin: 12px; }
-  .modal-content button.close { left: auto; right: 8px; }
-  .modal_add_to_cart form { display:flex; flex-direction: column; gap:8px; }
-  .modal_add_to_cart form input { width: 100%; margin-bottom: 6px; }
-  .modal_add_to_cart form button { margin-left: 0; width: 100%; }
-
-  /* Very small phones special adjustments (<480px) */
-  @media (max-width: 480px) {
-    .slider_area .single_slider .row { height: 250px; }
-    .slider_content h1 { font-size: 24px; line-height: 26px; }
-    .slider_content a { padding: 0 12px; font-size: 11px; }
-    .banner_text h2 { font-size: 20px; line-height: 26px; }
-    .product_tab_button ul li a { font-size: 14px; padding: 8px 10px; }
-    .section_title h2 { font-size: 20px; padding-right: 12px; }
-    .newsletter_black h2 { font-size: 20px; }
-    .cart_link > a { font-size: 11px; padding: 8px 8px 10px 12px; }
-    .mini_cart { min-width: 240px; padding: 12px; }
-    .cart_img { width: 72px; }
-    .cart_item { padding: 12px 0; }
   }
 }
 
-/* Orientation-specific styles */
-@media (max-width: 767px) and (orientation: landscape) {
-  .slider_area .single_slider .row { height: 350px; }
-  .main_menu nav > ul { max-height: 250px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+/* ============================================= */
+/* FOOTER */
+/* ============================================= */
+.footer_black {
+  background: #111;
+  color: #fff;
+  padding: 40px 20px;
+}
+.footer_black .widgets_container {
+  margin-bottom: 20px;
+}
+.footer_black h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.footer_black ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer_black ul li {
+  margin-bottom: 8px;
+}
+.footer_black ul li a {
+  color: #ccc;
+  font-size: 14px;
+}
+@media (max-width: 767px) {
+  .footer_black { text-align: center; }
 }
 
-/* High-resolution devices */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* Styles for high-resolution displays - keep icons crisp */
-}
-
-/* Print styles */
+/* ============================================= */
+/* PRINT STYLES */
+/* ============================================= */
 @media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-  
   .header_top,
   .header_middel,
   .header_bottom,
   .mobile-menu-toggle,
   .product_tab_button,
   .newsletter_area,
-  .footer_black {
-    display: none !important;
-  }
-  
-  body {
-    font-size: 12pt;
-    line-height: 1.5;
-  }
-  
-  a { text-decoration: underline; }
-}
-
-
-/* Logo adjustments */
-#lg {
-  max-width: 80px;   /* adjust logo size (you can reduce/increase if needed) */
-  height: auto;       /* keep aspect ratio */
-  display: block;
-}
-
-.contact_icone {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* push logo to the left */
-}
-
-/* Responsive logo sizes */
-@media (max-width: 992px) {
-  #lg {
-    max-width: 60px;
-  }
-}
-
-@media (max-width: 576px) {
-  #lg {
-    max-width: 40px;
-  }
+  .footer_black { display: none !important; }
 }
