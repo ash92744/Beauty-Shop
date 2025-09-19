@@ -473,10 +473,20 @@ a { color: inherit; text-decoration: none; cursor: pointer; }
 /* ============================================= */
 /* GLOBAL SCALE DOWN BELOW 400PX (50% SIZE) */
 /* ============================================= */
+/* ============================================= */
+/* GLOBAL SCALE DOWN BELOW 400PX (50% SIZE FIXED) */
+/* ============================================= */
+/* ============================================= */
+/* SCALE DOWN SAFELY BELOW 400PX */
+/* ============================================= */
 @media (max-width: 400px) {
-  body {
+  #page-wrapper {
     transform: scale(0.5);
     transform-origin: top left;
-    width: 200%;   /* prevent extra whitespace */
+    width: 200vw;      /* expand logically */
+    overflow-x: hidden;
+  }
+  html, body {
+    overflow-x: hidden;
   }
 }
