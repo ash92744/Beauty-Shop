@@ -461,7 +461,6 @@ a {
   .newsletter_black .newsletter_content form input {
     padding: 12px 14px;
     font-size: 16px;
-    /* Better for mobile touch */
   }
 
   .newsletter_black .newsletter_content form button {
@@ -571,18 +570,11 @@ a {
 /* ============================================= */
 /* GLOBAL SCALE DOWN BELOW 400PX (50% SIZE) */
 /* ============================================= */
-/* ============================================= */
-/* GLOBAL SCALE DOWN BELOW 400PX (50% SIZE FIXED) */
-/* ============================================= */
-/* ============================================= */
-/* SCALE DOWN SAFELY BELOW 400PX */
-/* ============================================= */
 @media (max-width: 400px) {
   #page-wrapper {
     transform: scale(0.5);
     transform-origin: top left;
     width: 200vw;
-    /* expand logically */
     overflow-x: hidden;
   }
 
@@ -597,21 +589,17 @@ a {
 /* ============================================= */
 @media (max-width: 400px) {
 
-  /* Increase slider height */
   .slider_area .single_slider:first-child .row {
     height: 400px !important;
-    /* slightly taller */
     padding: 10px 0;
   }
 
-  /* Center the content */
   .slider_area .single_slider:first-child .slider_content {
     text-align: center;
     margin: 0 auto;
     max-width: 90%;
   }
 
-  /* Adjust heading and paragraph spacing */
   .slider_area .single_slider:first-child .slider_content h1 {
     font-size: 22px !important;
     line-height: 28px !important;
@@ -624,7 +612,6 @@ a {
     line-height: 1.4 !important;
   }
 
-  /* Adjust button spacing if any */
   .slider_area .single_slider:first-child .slider_content .btn {
     margin-top: 10px;
   }
@@ -643,9 +630,7 @@ a {
   .banner_section .col-lg-4,
   .banner_section .col-md-6 {
     width: 90% !important;
-    /* make cards slightly smaller */
     margin-bottom: 15px !important;
-    /* spacing between cards */
   }
 
   .banner_section .single_banner .banner_thumb {
@@ -682,7 +667,9 @@ a {
   }
 }
 
-
+/* ============================================= */
+/* MODAL & IMAGES FOR <400px */
+/* ============================================= */
 @media (max-width: 400px) {
   .mimg {
     width: 200px !important;
@@ -709,13 +696,160 @@ a {
   #low {
     max-width: 50%;
   }
-  #para{
+  #para {
     max-width: 90%;
   }
-  .modal_tab_button{
+  .modal_tab_button {
     max-width: 90%;
   }
-  .nav-link{
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ============================================= */
+/* APPLY ALL <400px RULES TO 400-700px RANGE */
+/* ============================================= */
+@media (min-width: 401px) and (max-width: 700px) {
+
+  /* Reusing all <400px rules */
+  #page-wrapper {
+    transform: scale(0.5);
+    transform-origin: top left;
+    width: 200vw;
+    overflow-x: hidden;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: calc(100% - 20px);
+    padding: 0 10px;
+  }
+
+  .text-sm-center {
+    text-align: center !important;
+  }
+
+  .px-sm-1 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .my-sm-1 {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .slider_area .single_slider:first-child .row {
+    height: 400px !important;
+    padding: 10px 0;
+  }
+
+  .slider_area .single_slider:first-child .slider_content {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .slider_area .single_slider:first-child .slider_content h1 {
+    font-size: 22px !important;
+    line-height: 28px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .slider_area .single_slider:first-child .slider_content p {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  .slider_area .single_slider:first-child .slider_content .btn {
+    margin-top: 10px;
+  }
+
+  .banner_section .row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .banner_section .col-lg-4,
+  .banner_section .col-md-6 {
+    width: 90% !important;
+    margin-bottom: 15px !important;
+  }
+
+  .banner_section .single_banner .banner_thumb {
+    position: relative;
+    text-align: center !important;
+  }
+
+  .banner_section .single_banner .banner_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .banner_section .single_banner .banner_content p {
+    font-size: 32px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .banner_section .single_banner .banner_content h2 {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .banner_section .single_banner .banner_content span {
+    font-size: 32px !important;
+    color: white;
+  }
+
+  .banner_section .single_banner img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .mimg {
+    width: 200px !important;
+  }
+
+  .simg {
+    width: 100px !important;
+  }
+
+  .modal_tab_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .modal_tab {
+    max-width: 50%;
+  }
+
+  #boxy {
+    max-width: 90%;
+  }
+  #low {
+    max-width: 50%;
+  }
+  #para {
+    max-width: 90%;
+  }
+  .modal_tab_button {
+    max-width: 90%;
+  }
+  .nav-link {
     display: flex;
     align-items: center;
     justify-content: center;
